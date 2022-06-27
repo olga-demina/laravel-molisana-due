@@ -12,15 +12,31 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+$menu = config('menu');
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/', function () use ($menu) {
+   
+    $data = [
+        'menu' => $menu
+    ];
+
+    return view('home', $data);
 })->name('home');
 
-Route::get('/news', function() {
-    return view('news');
+Route::get('/news', function () use ($menu) {
+  
+    $data = [
+        'menu' => $menu
+    ];
+
+    return view('news', $data);
 })->name('news');
 
-Route::get('/products', function() {
-    return view('products');
+Route::get('/products', function () use ($menu) {
+
+    $data = [
+        'menu' => $menu
+    ];
+
+    return view('products', $data);
 })->name('products');
